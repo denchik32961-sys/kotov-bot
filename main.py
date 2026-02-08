@@ -24,8 +24,6 @@ def home():
 def webhook():
     data = request.json
 
-    if WEBHOOK_SECRET and data.get("secret") != WEBHOOK_SECRET:
-        return jsonify({"error": "unauthorized"}), 403
 
     message = data.get("message", "No message")
     send_telegram(f"📡 Signal received:\n{message}")
